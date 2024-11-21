@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\bibliotec\\Bibliotec.csproj": {}
+    "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj": {}
   },
   "projects": {
-    "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\bibliotec\\Bibliotec.csproj": {
+    "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\bibliotec\\Bibliotec.csproj",
+        "projectUniqueName": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj",
         "projectName": "Bibliotec",
-        "projectPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\bibliotec\\Bibliotec.csproj",
+        "projectPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj",
         "packagesPath": "C:\\Users\\55890867873\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\bibliotec\\obj\\",
+        "outputPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\55890867873\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,6 +50,8 @@
               "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
             }
