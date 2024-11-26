@@ -6,7 +6,7 @@ using Bibliotec.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace Bibliotec.Context
+namespace Bibliotec.Contexts
 {
     //Classe que terá as infomações do banco de dados
     public class Context : DbContext
@@ -38,6 +38,8 @@ namespace Bibliotec.Context
         public DbSet<Categoria> Categoria { get; set; }
 
         public DbSet<Curso> Curso { get; set; }
+
+        public DbSet<Livro> Livro {get; set;}
 
         public DbSet<Usuario> Usuario { get; set; }
 

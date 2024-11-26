@@ -17,7 +17,62 @@
 /* Desktop First à partir de 992px */
 body {
   font-family: "Montserrat", sans-serif;
+  background-color: #dfdfdf;
+}
 
+/******************* Cabeçalho *******************/
+.header {
+  background-color: var(--dark-blue);
+  height: 96px;
+}
+
+.container {
+  max-width: 992px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 400px;
+  height: 96px;
+  /* border: 1px solid white; */
+}
+.header .navbar .logo-mobile,
+.header .navbar .arrow-left,
+.menu-hamburger {
+  display: none;
+}
+
+.header .navbar .navbar-item {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.4s;
+}
+.header .navbar .navbar-item:hover {
+  color: var(--green);
+}
+
+/******************* Banner *******************/
+.banner {
+  background-image: linear-gradient(to right bottom, #4a67df, #4599da);
+}
+
+/* container do banner */
+.banner .banner-flex {
+  position: relative;
+  width: 100%;
   height: 560px;
   display: flex;
   justify-content: space-between;
@@ -237,6 +292,50 @@ body {
 /* *************** Footer ************** */
 .footer {
   padding: 30px 0;
+  color: white;
+  background-color: var(--dark-blue);
+}
+.footer h4 {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 600;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+.footer .right {
+  padding: 20px;
+  text-align: center;
+}
+
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  min-height: 245px;
+  padding: 15px 0 25px;
+  border-bottom: 1px solid white;
+}
+
+/* apagar */
+.footer-logo, .footer-nav {
+  /* border: 1px solid red; */
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 230px;
+}
+
+.footer-logo .img-footer-logo {
+  width: 182px;
+}
+
+.footer-logo .img-footer-senai {
+  width: 176px;
 }
 
 

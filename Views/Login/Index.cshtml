@@ -1,0 +1,14 @@
+<!-- ************ FORMULÁRIO LOGIN ************ -->
+<article class="bk-login">
+  <div class="form-box">
+    <h1>Entre na BiblioTec</h1>
+    <form style="width: 60%; display: flex; flex-direction: column;" method="post" action="@Url.Action("Logar")">
+        <label class="form-label" for="Email">E-mail</label>
+        <input type="email" name="Email" class="form-input" placeholder="email@alunosenai.com">
+        <label class="form-label" for="Senha">Senha</label>
+        <input type="password" name="Senha" id="senha" class="form-input" placeholder="*******">
+        <a href="#" class="esqueci-senha">Esqueci minha senha</a>
+        <button type="submit" class="btn-entrar">Entrar</button>
+    </form>
+  </div>
+</article>
