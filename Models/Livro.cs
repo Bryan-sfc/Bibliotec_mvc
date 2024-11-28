@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Identity.Client;
 
 namespace Bibliotec.Models
 {
@@ -16,7 +15,9 @@ namespace Bibliotec.Models
         public string? Editora { get; set; }
         public string? Descricao { get; set; }
         public string? Idioma { get; set; }
+        public string? Imagem { get; set; }
         public bool Reservado { get; set; }
         public bool Ativo { get; set; }
+
     }
 }

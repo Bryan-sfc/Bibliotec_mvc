@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
+     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bibliotec</title>
     <link rel="icon" type="image/png" sizes="32x32" href="~/images/logo-mobile.png">
@@ -16,14 +16,15 @@
 </head>
 
 <body>
-    <header class="header">
-   <div class="container header-flex">
+     <!-- ************ CABEÇALHO ************ -->
+     <header class="header">
+        <div class="container header-flex">
             <img src="~/images/logo-recortado.png" alt=""
                 class="logotipo. Imagem de um libro aberto e um texto escrito Bibliotech" />
             <nav class="navbar" id="navbar">
                 <img class="arrow-left" src="~/images/arrow-left.svg" alt="Menu Mobile" onclick="mostraMenu()" />
                 <img class="logo-mobile" src="~/images/logo-mobile.png" alt="Menu Mobile" />
-                <a asp-controller="Login" asp-action="index" class="navbar-item">Login</a>
+                <a asp-controller="Login" asp-action="Index" class="navbar-item">Login</a>
             </nav>
 
             <img src="~/images/menu-hamburger.png" alt="" class="menu-hamburger" id="menu-hamburger"
@@ -31,11 +32,14 @@
         </div>
     </header>
 
-    @RenderBody()
+    @* <div class="container">
+        <main role="main" class="pb-3"> *@
+            @RenderBody()
+        @* </main>
+    </div> *@
 
-    <!-- ************ Rodapé ************ -->
-     <footer class="footer">
-             <div class="container footer-flex">
+<footer class="footer">
+        <div class="container footer-flex">
 
             <div class="footer-logo">
                 <img class="images-footer-logo" src="~/images/logo-desktop.svg" alt="" />
@@ -71,6 +75,7 @@
         </div>
     </footer>
     <script src="~/scripts/index.js"></script>
+ 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

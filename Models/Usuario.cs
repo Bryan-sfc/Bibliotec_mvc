@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Identity.Client;
 
 namespace Bibliotec.Models
 {
     public class Usuario
     {
-        [Key]
+     
+     [Key]
         public int UsuarioID { get; set; }
         public string? Nome { get; set; }
         public DateOnly DtNascimento { get; set; }
@@ -21,8 +20,11 @@ namespace Bibliotec.Models
         public bool Admin { get; set; }
         public bool Status { get; set; }
 
+        // Criar um atributo 
+        //Eu falo para este atributo que ele é uma FK
         [ForeignKey("Curso")]
-        public int CursoID { get; set; }
-        public Curso Curso { get; set; }
+        public int? CursoID {get; set;}
+        public Curso? Curso {get; set;}
+
     }
 }

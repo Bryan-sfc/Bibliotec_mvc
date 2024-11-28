@@ -4738,11 +4738,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj",
+      "projectUniqueName": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec.csproj",
       "projectName": "Bibliotec",
-      "projectPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\Bibliotec.csproj",
+      "projectPath": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec.csproj",
       "packagesPath": "C:\\Users\\55890867873\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\55890867873\\Desktop\\BibliotecMVC\\Bibliotec\\obj\\",
+      "outputPath": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\55890867873\\AppData\\Roaming\\NuGet\\NuGet.Config",

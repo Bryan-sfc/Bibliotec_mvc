@@ -11,5 +11,6 @@ namespace Bibliotec.Models
         [Key]
         public int CategoriaID { get; set; }
         public string? Nome { get; set; }
+
     }
 }

@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        //APARECE A MINHA HOME
         return View();
     }
 

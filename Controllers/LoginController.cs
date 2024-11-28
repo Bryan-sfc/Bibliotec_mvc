@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Bibliotec.Contexts;
 using Bibliotec.Models;
@@ -28,36 +27,37 @@ namespace Bibliotec.Controllers
             return View();
         }
 
-        [Route("controller")]
-        public IActionResult Logar(IFormCollection form)
-        {
-            string emailInformado = form["Email"];
-            string senhaInformada = form["Senha"];
+        [Route("Logar")]
+        public IActionResult Logar(IFormCollection form){
+            // Criar duas variaveis para armazenar as informacoes do formulario
+            string emailInformado = form["Email"].ToString();
+            string senhaInformado = form["Senha"].ToString();
 
+            // Busca no banco de dados
+            Usuario usuarioBuscado = context.Usuario.FirstOrDefault(usuario => usuario.Email == emailInformado && usuario.Senha == senhaInformado)!;
 
-            Usuario UsuarioBuscado = context.Usuario.FirstOrDefault
-            (Usuario => Usuario.Email == emailInformado && Usuario.Senha == senhaInformada)!;
+            // De outra forma:
+            //Criei uma lista de usuários
+            // List<Usuario> listaUsuario = context.Usuario.ToList();
 
-            // List<Usuario> ListaUsuario = context.Usuario.ToList();
-
-            // foreach(Usuario usuario_ in ListaUsuario){
-            //     if.(usuario_.Email == emailInformado && usuario__.Senha == senhaInformada){
-            //         //usuario logado
-            //     } else {
-            //         //usuario nao encontrado
+            // foreach(Usuario usuario_ in listaUsuario){
+            //     if(usuario_.Email == emailInformado && usuario_.Senha == senhaInformado){
+            //         //Usuario logado
+            //     }else{
+            //         //Usuario nao encontrado
             //     }
             // }
 
-            if(UsuarioBuscado == null){
-                Console.WriteLine($"Dados Inválidos!");
+            //Se meu usuario buscado for igual a nulo
+            if(usuarioBuscado == null){
+                Console.WriteLine($"Dados inválidos!");
                 return LocalRedirect("~/Login");
-            } else {
+            }else{
                 Console.WriteLine($"Eba você entrou!");
-                return LocalRedirect("~/Livro");
+                HttpContext.Session.SetString("UsuarioID", usuarioBuscado.UsuarioID.ToString());
+                HttpContext.Session.SetString("Admin", usuarioBuscado.Admin.ToString());
+                return LocalRedirect("~/");
             }
-
-
-            return View();
         }
 
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -65,5 +65,6 @@ namespace Bibliotec.Controllers
         // {
         //     return View("Error!");
         // }
+
     }
 }
