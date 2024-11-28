@@ -23,11 +23,11 @@
             </thead>
 
             <tbody>
-
+                @foreach(var Livro in ViewBag.Livros){
                 <tr>
-                    <td data-cell="titulo">Nome</td>
-                    <td data-cell="reservado">Sim</td>
-                    <td data-cell="data devol.">Não possui reserva</td>
+                    <td data-cell="titulo">@Livro.Nome</td>
+                    <td data-cell="reservado">@(ViewBag.LivroComReserva.containsKey(Livro.LivroID) ? "Sim" : "Não") </td>
+                    <td data-cell="data devol.">@(ViewBag.LivroComReserva.containsKey(Livro.LivroID) ? ViewBag.LivroComReserva{Livro.LivroID}.ToString("dd/MM/yyyy") : ("Não Possui Reserva") </td>
                     <td class="icon" data-cell="editar"><a class="navbar-item"><img style="width: 40px;"
                                 src="~/images/editar.svg" alt=""></a></td>
                     <td class="icon" data-cell="detalhes"><a class="navbar-item"><img style="width: 40px;"
@@ -35,6 +35,7 @@
                     <td class="icon" data-cell="excluir"><a class="navbar-item"><img style="width: 40px;"
                                 src="~/images/excluir.svg" alt=""></a></td>
                 </tr>
+                }
             </tbody>
         </table>
 

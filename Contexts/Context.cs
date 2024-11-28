@@ -15,26 +15,18 @@ namespace Bibliotec.Contexts
 
         // OnConfiguring -> Possui a configuracao da conexao com
         //o banco de dados
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
-                // colocar as informacoes do banco
-                // As configuracoes existem?
-                if(!optionsBuilder.IsConfigured){
-                    // A string de conexao do banco de dados:
-                    // Data Source => Nome do servidor do banco de dados
-                    // Initial Catalog => Nome do banco de dados
-                    // User Id e Password => Informacoes de acesso ao servidor do banco de dados
-                    // ALUNOS:
-                    //  optionsBuilder.UseSqlServer(@"
-                    //  Data Source=DESKTOP-LAO5MIJ\\SQLEXPRESSTEC; 
-                    //  Initial Catalog = Bibliotec_mvc; 
-                    //  User Id=sa; 
-                    //  Password=123; 
-                    //  Integrated Security=true; TrustServerCertificate = true");
-                    // SAMANTA:
-                    // optionsBuilder.UseSqlServer("Data Source=DESKTOP-LAO5MIJ\\SQLEXPRESSTEC; Initial Catalog = Bibliotec; User Id=sa; Password=abc123; Integrated Security=true; TrustServerCertificate = true");
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-LAO5MIJ\\SQLEXPRESSTEC; Initial Catalog = Bibliotec; User Id=sa; Password=abc123; Integrated Security=true; TrustServerCertificate = true");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
 
-                }
+            }
+            optionsBuilder.UseSqlServer(@"
+                    Data Source=NOTE36-S28\SQLEXPRESS;
+                    Initial Catalog = Bibliotec_mvc;
+                    User Id=sa; 
+                    Password=123; 
+                    TrustServerCertificate = true");
         }
     
         // As referencias das nossas tabelas no banco de dados:
