@@ -2,11 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using Bibliotec.Contexts;
 using Bibliotec.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Bibliotec_mvc.Controllers
 {
@@ -94,7 +100,9 @@ namespace Bibliotec_mvc.Controllers
                 }
 
                 novoLivro.Imagem = arquivo.FileName;
-            }else{
+            }
+            else
+            {
                 novoLivro.Imagem = "padrao.png";
             }
 
@@ -127,18 +135,124 @@ namespace Bibliotec_mvc.Controllers
 
             context.SaveChanges();
 
-            return LocalRedirect("/Cadastro");
+            return LocalRedirect("/Livro/Cadastro");
 
         }
 
 
+        [Route("Editar/{id}")]
+        public IActionResult Editar(int id)
+        {
 
+            ViewBag.Admin = HttpContext.Session.GetString("Admin")!;
 
+            ViewBag.CategoriasDoSistema = context.Categoria.ToList();
 
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        // public IActionResult Error()
-        // {
-        //     return View("Error!");
-        // }
+            // LivroID == 3
+
+            //Buscar quem é o tal do id numero 3:
+            Livro livroEncontrado = context.Livro.FirstOrDefault(livro => livro.LivroID == id)!;
+
+            //Buscar as categorias que o livroEncontrado possui
+            var categoriasDoLivroEncontrado = context.LivroCategoria
+            .Where(identificadorLivro => identificadorLivro.LivroID == id)
+            .Select(livro => livro.Categoria)
+            .ToList();
+
+            //Quero pegar as informaçoes do meu livro selecionado e mandar para a minha View
+            ViewBag.Livro = livroEncontrado;
+            ViewBag.Categoria = categoriasDoLivroEncontrado;
+
+            return View();
+        }
+
+        [Route("Atualizar")]
+        public IActionResult Atualizar(IFormCollection form, int id, IFormFile Imagem)
+        {
+            //Buscar um livro especifico pelo ID
+            Livro LivroAtualizado = context.Livro.FirstOrDefault(Livro => Livro.LivroID == id)!;
+
+            LivroAtualizado.Nome = form["Nome"];
+            LivroAtualizado.Escritor = form["Escritor"];
+            LivroAtualizado.Editora = form["Editora"];
+            LivroAtualizado.Descricao = form["Desricao"];
+            LivroAtualizado.Idioma = form["Idioma"];
+
+            //Upload de imagem
+            if (Imagem != null && Imagem.Length > 0)
+            {
+                //Definir o caminho da minha imagem
+                var CaminhoImagem = Path.Combine("wwwroot/images/livros", Imagem.FileName);
+                //Verificar se o usuario colocou uma imagem para atualizar o livro
+                if (string.IsNullOrEmpty(LivroAtualizado.Imagem))
+                {
+                    //caso exista, ela irá sera apagada
+                    var CaminhoImagemAntiga = Path.Combine("wwwroot/images/livros", LivroAtualizado.Imagem);
+                    //ver se existe uma imagem no cmainho antigo
+                    if (System.IO.File.Exists(CaminhoImagemAntiga))
+                    {
+                        System.IO.File.Delete(CaminhoImagemAntiga);
+                    }
+                }
+
+                using(var stream = new FileStream(CaminhoImagem, FileMode.Create)){
+                    Imagem.CopyTo(stream);
+                }
+
+                //Subir essa mudança para o meu banco de dados
+                LivroAtualizado.Imagem = Imagem.FileName;
+            }
+
+            //Categorias:
+            //Primeiro: Precisamos pegar as categorias selecionadas do usuário
+            var categoriasSelecionadas = form["Categoria"].ToList();
+
+            //Segundo: Pegaremos as categorias ATUAIS do livro
+            var categoriasAtuais = context.LivroCategoria.Where(Livro => Livro.LivroID == id);
+
+            //Terceiro: Removeremos as categorias antigas
+            foreach(var categoria in categoriasAtuais){
+                if(!categoriasSelecionadas.Contains(categoria.CategoriaID.ToString())){
+                    //Nos vamos remover a categoria do nosso context
+
+                    context.LivroCategoria.Remove(categoria);
+                }
+            }
+
+            //Quarto: Adicionaremos as novas categorias
+            foreach(var categoria in categoriasSelecionadas){
+                //Verificando se não existe a categoria nesse livro
+                if(categoriasAtuais.Any(c => c.CategoriaID.ToString() == categoria)){
+                    context.LivroCategoria.Add(new LivroCategoria{
+                        LivroID = id,
+                        CategoriaID = int.Parse(categoria)
+                    });
+                }
+            }
+
+            context.SaveChanges();
+
+            return LocalRedirect("/livro");
+        }
+
+        //Método de excluir o livro
+        [Route("Excluir")]
+        public IActionResult Excluir(int id){
+            //Buscar qual o livro do id que precisamos excluir
+            Livro LivroEncontrado = context.Livro.FirstOrDefault(Livro => Livro.LivroID == id)!;
+
+            //Buscar as categorias desse livro
+            var CategoriasDoLivro = context.LivroCategoria.Where(Livro => Livro.LivroID == id).ToList();
+
+            //Precisa excluir primeiro o registro da tabela intermediária
+            foreach(var categoria in CategoriasDoLivro){
+                context.LivroCategoria.Remove(categoria);
+            }
+
+            context.Livro.Remove(LivroEncontrado);
+
+            context.SaveChanges();
+            return LocalRedirect("/Livro");
+        }
     }
 }
