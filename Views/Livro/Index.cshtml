@@ -1,7 +1,6 @@
 <main class="container-main">
     <div class="box-conteudo listar-livros">
         <h1>listar livros</h1>
-
         <div class="pesquisa">
             <div class="box-input">
                 <input type="text">
@@ -9,7 +8,6 @@
             </div>
             <a href=""><img class="botao-filtro" src="~/images/config-icon.png" alt="iconde de filtro"></a>
         </div>
-
         <table>
             <thead>
                 <tr>
@@ -23,14 +21,20 @@
             </thead>
 
             <tbody>
-                @foreach(var Livro in ViewBag.Livros){
+                @foreach(var livro in ViewBag.Livros){
                 <tr>
-                    <td data-cell="titulo">@Livro.Nome</td>
+                    <td data-cell="titulo">@livro.Nome</td>
                     <td data-cell="reservado">
-                    @(ViewBag.LivroComReserva.containsKey(Livro.LivroID)
-                    ? "Sim" 
-                    :"Não")</td>
-                    <td data-cell="data devol.">@(ViewBag.LivroComReserva.containsKey(Livro.LivroID) ? ViewBag.LivroComReserva[Livro.LivroID].ToString("dd/MM/yyyy") : "Não Possui Reserva") </td>
+                        @*Dentro da tabela Livros Reserva Contém a chave livroID???*@
+                        @(ViewBag.LivrosComReserva.ContainsKey(livro.LivroId) 
+                        ? "Sim" 
+                        :"Não")</td>
+                    <td data-cell="data devol.">
+                         @*Dentro da tabela Livros Reserva Contém a chave livroID???*@
+                        @(ViewBag.LivrosComReserva.ContainsKey(livro.LivroId) 
+                        ? ViewBag.LivrosComReserva[livro.LivroID].ToString("dd/MM/yyyy") 
+                        :"Nao possui reserva")
+                    </td>
                     <td class="icon" data-cell="editar"><a class="navbar-item"><img style="width: 40px;"
                                 src="~/images/editar.svg" alt=""></a></td>
                     <td class="icon" data-cell="detalhes"><a class="navbar-item"><img style="width: 40px;"

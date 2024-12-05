@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec\\Bibliotec.csproj": {}
+    "C:\\Users\\admin\\Desktop\\Bibliotec atualizada\\Bibliotec_mvc\\Bibliotec.csproj": {}
   },
   "projects": {
-    "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec\\Bibliotec.csproj": {
+    "C:\\Users\\admin\\Desktop\\Bibliotec atualizada\\Bibliotec_mvc\\Bibliotec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec\\Bibliotec.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Bibliotec atualizada\\Bibliotec_mvc\\Bibliotec.csproj",
         "projectName": "Bibliotec",
-        "projectPath": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec\\Bibliotec.csproj",
-        "packagesPath": "C:\\Users\\55890867873\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\55890867873\\Desktop\\Bibliotec-Atualizado\\Bibliotec\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Desktop\\Bibliotec atualizada\\Bibliotec_mvc\\Bibliotec.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\Bibliotec atualizada\\Bibliotec_mvc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\55890867873\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -75,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

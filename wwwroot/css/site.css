@@ -318,6 +318,11 @@ body {
   border-bottom: 1px solid white;
 }
 
+/* apagar */
+.footer-logo, .footer-nav {
+  /* border: 1px solid red; */
+}
+
 .footer-logo {
   display: flex;
   flex-direction: column;

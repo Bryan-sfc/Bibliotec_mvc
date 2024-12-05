@@ -9,7 +9,7 @@ namespace Bibliotec.Models
     public class Categoria
     {
         [Key]
-        public string CategoriaID { get; set; }
+        public int CategoriaID { get; set; }
         public string? Nome { get; set; }
 
     }

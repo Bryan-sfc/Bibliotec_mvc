@@ -19,7 +19,6 @@
                     </div>
                 </div>
             </div>
-    using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
             <div class="form-linha">
                 <div class="form-group">
@@ -41,13 +40,13 @@
                 <div class="form-group">
                     <label class="form-label" for="categoria">Categoria</label>
                     <ul>
-                        @foreach(Categoria categoria in ViewBag.Categorias)
-                        {
+                        @foreach(Categoria categoria in ViewBag.Categorias){
                             <li>
-                                <input name="Categoria" type="checkbox" value="@categoria.CategoriaID">
-                                <label class="form-label-categoria" for="Categoria">@categoria.Nome</label>
+                        <input name="Categoria" type="checkbox" value="@categoria.CategoriaID">
+                        <label class="form-label-categoria" for="Categoria">@categoria.Nome</label>
                             </li>
                         }
+                       
                     </ul>
                 </div>
             </div>

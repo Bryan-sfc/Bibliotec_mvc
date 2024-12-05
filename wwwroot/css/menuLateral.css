@@ -265,6 +265,10 @@ aside .user-logout-min {
         z-index: 2;
     }
 
+    .box-conteudo{
+        /* padding: 10px; */
+    }
+
     .container-main{
         width: 90%;
     }
@@ -293,5 +297,3 @@ aside .user-logout-min {
     background: #2fd6cb;
     color: #FFF;
   }
-css menu lateral.txt
-Exibindo css menu lateral.txt…
